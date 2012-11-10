@@ -1,0 +1,6 @@
+.system{color:#808080;font-style:italic;}
+.nodiv{display:inline;}
+.login, .server{background-color:#000000;color:#00FF00;font-family:Courier New;}
+.user{display:inline;float:left;}
+.user .username{color:#FF0000;font-weight:bold;}
+.topic{font-weight:bold;}
