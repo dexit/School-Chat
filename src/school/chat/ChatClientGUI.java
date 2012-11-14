@@ -37,7 +37,7 @@ public class ChatClientGUI extends JFrame {
 		setLocation(x, y);
 		Container cp = getContentPane();
 		cp.setLayout(null);
-		setIconImage(new ImageIcon(getClass().getResource("icons/comments.png")).getImage());
+		setIconImage(new ImageIcon(getClass().getResource("/icons/comments.png")).getImage());
 		// Anfang Komponenten
 
 		clientPortLabel.setBounds(0, 0, frameWidth, 16);
@@ -79,7 +79,7 @@ public class ChatClientGUI extends JFrame {
 	// Ende Ereignisprozeduren
 
 	public static void main(String[] args) {
-		new school.chat.ChatClientGUI("ChatClient");
+		new ChatClientGUI("ChatClient");
 	}
 	// Ende Methoden
 }

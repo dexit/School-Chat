@@ -1,3 +1,5 @@
+package school.chat;
+
 import java.io.*;
 import java.net.*;
 import java.awt.*;
@@ -148,7 +150,7 @@ public class ChatClient extends JApplet implements Runnable,
 				public void actionPerformed(ActionEvent evt) {
 					traymenu_quit_clicked(evt); } });
 			tray = SystemTray.getSystemTray();
-			Image image = new ImageIcon(getClass().getResource("icons/disconnect.png")).getImage();
+			Image image = new ImageIcon(getClass().getResource("/icons/disconnect.png")).getImage();
 			MouseListener mouseListener = new MouseListener() {
                                 @Override
 				public void mouseClicked(MouseEvent e) {
@@ -327,7 +329,7 @@ public class ChatClient extends JApplet implements Runnable,
 			text.requestFocus();
 			button.setEnabled(true);
 		}else{
-			frame.setIconImage(new ImageIcon(getClass().getResource("icons/comment.png")).getImage());
+			frame.setIconImage(new ImageIcon(getClass().getResource("/icons/comment.png")).getImage());
 		}
 
 		// Anfang Komponenten
@@ -354,15 +356,15 @@ public class ChatClient extends JApplet implements Runnable,
 				trayIcon.setToolTip(server + " - " + name + " - School Java Chat - disconnected");
 				break;
 			  case 0:
-				image = new ImageIcon(getClass().getResource("icons/status_offline.png")).getImage();
+				image = new ImageIcon(getClass().getResource("/icons/status_offline.png")).getImage();
 				trayIcon.setToolTip(server + " - " + name + " - School Java Chat - offline");
 				break;
 			  case 1:
-				image = new ImageIcon(getClass().getResource("icons/status_online.png")).getImage();
+				image = new ImageIcon(getClass().getResource("/icons/status_online.png")).getImage();
 				trayIcon.setToolTip(server + " - " + name + " - School Java Chat - online");
 				break;
 			  case 2:
-				image = new ImageIcon(getClass().getResource("icons/status_away.png")).getImage();
+				image = new ImageIcon(getClass().getResource("/icons/status_away.png")).getImage();
 				trayIcon.setToolTip(server + " - " + name + " - School Java Chat - away from keyboard");
 				break;
 			}
@@ -403,11 +405,11 @@ public class ChatClient extends JApplet implements Runnable,
 				break;
 			}
 			pane.setToolTipText(statusMessage);
-			pane.setText("<html><body><img src=\"" + getClass().getResource("icons/" + statusImg) + "\" border=\"0\"/><span style=\"color:#" + color + ";\">" + name + "</span></body></html>");
+			pane.setText("<html><body><img src=\"" + getClass().getResource("/icons/" + statusImg) + "\" border=\"0\"/><span style=\"color:#" + color + ";\">" + name + "</span></body></html>");
 		}
 	}
 	private class newMessageBlink extends Thread {
-		private String[] images = {"icons/email.png","icons/empty.png"};
+		private String[] images = {"/icons/email.png","icons/empty.png"};
                 @Override
 		public void run() {
 			try {

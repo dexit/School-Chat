@@ -49,7 +49,7 @@ public class ChatServerGUI extends JFrame {
 		setLocation(x, y);
 		Container cp = getContentPane();
 		cp.setLayout(null);
-		setIconImage(new ImageIcon(getClass().getResource("icons/server.png")).getImage());
+		setIconImage(new ImageIcon(getClass().getResource("/icons/server.png")).getImage());
 		// Anfang Komponenten
 
 		serverPortLabel.setBounds(0, 0, frameWidth, 16);
@@ -101,7 +101,7 @@ public class ChatServerGUI extends JFrame {
 		if(this.server){
 			closeServer();
 		}else{
-			cs = new school.chat.ChatServer(Integer.parseInt(this.serverPort.getText()));
+			cs = new ChatServer(Integer.parseInt(this.serverPort.getText()));
 			//serverIP.setText(cs.getMyIP());
 			//System.out.println(cs.getMyIP());
 			cs.start();
@@ -114,7 +114,7 @@ public class ChatServerGUI extends JFrame {
 	// Ende Ereignisprozeduren
 
 	public static void main(String[] args) {
-		new school.chat.ChatServerGUI("ChatServer");
+		new ChatServerGUI("ChatServer");
 	}
 	// Ende Methoden
 }

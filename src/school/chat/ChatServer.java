@@ -15,7 +15,7 @@ public class ChatServer extends Thread {
 	public ArrayList<ChatThread> clients = new ArrayList<ChatThread>(0);
 	public static ServerSocket server;
 	private boolean http = false;
-	protected school.chat.MySQL ms;
+	protected MySQL ms;
 	// Ende Attribute
 
 
@@ -313,7 +313,7 @@ public class ChatServer extends Thread {
 			return exist;
 		}
 		private boolean register(String uName, String password){
-			password = school.chat.BCrypt.hashpw(password,school.chat.BCrypt.gensalt());
+			password = BCrypt.hashpw(password,BCrypt.gensalt());
 			boolean result = false;
 
 			try{
@@ -621,7 +621,7 @@ public class ChatServer extends Thread {
 	
 	public static void main(String[] args){
 		if(args.length == 0){
-			new school.chat.ChatServerGUI("ChatServer");
+			new ChatServerGUI("ChatServer");
 		}else{
 			int port = Integer.parseInt(args[0]);
 			new ChatServer(port).startServer();
