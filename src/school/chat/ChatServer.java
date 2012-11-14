@@ -445,7 +445,7 @@ public class ChatServer extends Thread {
 		}
 		private boolean setNewPassword(String password, String uname){
 			boolean result = false;
-			password = school.chat.BCrypt.hashpw(password,school.chat.BCrypt.gensalt());
+			password = BCrypt.hashpw(password,BCrypt.gensalt());
 			
 			try{
 				ms.connect();

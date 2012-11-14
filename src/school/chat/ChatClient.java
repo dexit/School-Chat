@@ -71,7 +71,7 @@ public class ChatClient extends JApplet implements Runnable,
 
 	private boolean useEmos = false;
 	private String[][] emos =	{{	":-)",					":-P",					":-D",					"^^",					":-o",						":-(",					"-.-",					";-D",					"xD"					/*"=D",					"x-(",				"B-)",				":'(",				"}:-)",				"=)",						":(|)",				";^)",						"\\m/",					"&gt;.&lt;"*/				},
-								{	"emoticon_smile.png",	"emoticon_tongue.png",	"emoticon_grin.png",	"emoticon_happy.png",	"emoticon_surprised.png",	"emoticon_unhappy.png", "emoticon_waii.png",	"emoticon_wink.png",	"emoticon_evilgrin.png"	/*"gtalk/equal_grin.gif",	"gtalk/angry.gif",	"gtalk/cool.gif",	"gtalk/cry.gif",	"gtalk/devil.gif",	"gtalk/equal_smile.gif",	"gtalk/monkey.gif",	"gtalk/nose_big_wink.gif",	"gtalk/rockout.gif",	"gtalk/wince.gif"*/	} };
+								{	"emoticon_smile.png",	"emoticon_tongue.png",	"emoticon_grin.png",	"emoticon_happy.png",	"/emoticon_surprised.png",	"emoticon_unhappy.png", "emoticon_waii.png",	"emoticon_wink.png",	"emoticon_evilgrin.png"	/*"gtalk/equal_grin.gif",	"gtalk/angry.gif",	"gtalk/cool.gif",	"gtalk/cry.gif",	"gtalk/devil.gif",	"gtalk/equal_smile.gif",	"gtalk/monkey.gif",	"gtalk/nose_big_wink.gif",	"gtalk/rockout.gif",	"gtalk/wince.gif"*/	} };
 	private boolean useSigns = false;
 	private String[][] signs =	{{	"@=*",		"&euro;",			"$",				"*music*",		"/!\\",			"(!)",				"&lt;3",			"(+)",		"(tick)",	 "(?)",			"(i)",				"*joystick*",		"*play*",			"*java*"	},
 								{	"bomb.png", "money_euro.png",	"money_dollar.png", "music.png",	"error.png",	"exclamation.png",	"gtalk/heart.png",	"add.png",	"accept.png", "help.png",	"information.png",	"joystick.png",		"controller.png",	"cup.png"	} };
@@ -409,7 +409,7 @@ public class ChatClient extends JApplet implements Runnable,
 		}
 	}
 	private class newMessageBlink extends Thread {
-		private String[] images = {"/icons/email.png","icons/empty.png"};
+		private String[] images = {"/icons/email.png","/icons/empty.png"};
                 @Override
 		public void run() {
 			try {
@@ -506,24 +506,24 @@ public class ChatClient extends JApplet implements Runnable,
 			}else if(text.getText().equals("/emoticonlist")){
 				history.append("<b>" + getTimestamp() + " list of all emoticons:</b><ol>");
 				for(int i = 0; i < emos[0].length; i++){
-					history.append("<li><img src=\"" + getClass().getResource("icons/" + emos[1][i]) + "\" border=\"0\"/> <img src=\"" + getClass().getResource("icons/bullet_left.png") + "\" border=\"0\"/> " + emos[0][i] + "</li>");
+					history.append("<li><img src=\"" + getClass().getResource("/icons/" + emos[1][i]) + "\" border=\"0\"/> <img src=\"" + getClass().getResource("/icons/bullet_left.png") + "\" border=\"0\"/> " + emos[0][i] + "</li>");
 				}
 				addText(area,history,"</ol>");
 			}else if(text.getText().equals("/signlist")){
 				history.append("<b>" + getTimestamp() + " list of all signs:</b><ol>");
 				for(int i = 0; i < signs[0].length; i++){
-					history.append("<li><img src=\"" + getClass().getResource("icons/" + signs[1][i]) + "\" border=\"0\"/> <img src=\"" + getClass().getResource("icons/bullet_left.png") + "\" border=\"0\"/> " + signs[0][i] + "</li>");
+					history.append("<li><img src=\"" + getClass().getResource("/icons/" + signs[1][i]) + "\" border=\"0\"/> <img src=\"" + getClass().getResource("/icons/bullet_left.png") + "\" border=\"0\"/> " + signs[0][i] + "</li>");
 				}
 				addText(area,history,"</ol>");
 			}else if(text.getText().equals("/eslist")){
 				history.append("<b>" + getTimestamp() + " list of all emoticons:</b><ol>");
 				for(int i = 0; i < emos[0].length; i++){
-					history.append("<li><img src=\"" + getClass().getResource("icons/" + emos[1][i]) + "\" border=\"0\"/> <img src=\"" + getClass().getResource("icons/bullet_left.png") + "\" border=\"0\"/> " + emos[0][i] + "</li>");
+					history.append("<li><img src=\"" + getClass().getResource("/icons/" + emos[1][i]) + "\" border=\"0\"/> <img src=\"" + getClass().getResource("/icons/bullet_left.png") + "\" border=\"0\"/> " + emos[0][i] + "</li>");
 				}
 				history.append("</ol>");
 				history.append("<b>list of all signs:</b><ol>");
 				for(int i = 0; i < signs[0].length; i++){
-					history.append("<li><img src=\"" + getClass().getResource("icons/" + signs[1][i]) + "\" border=\"0\"/> <img src=\"" + getClass().getResource("icons/bullet_left.png") + "\" border=\"0\"/> " + signs[0][i] + "</li>");
+					history.append("<li><img src=\"" + getClass().getResource("/icons/" + signs[1][i]) + "\" border=\"0\"/> <img src=\"" + getClass().getResource("/icons/bullet_left.png") + "\" border=\"0\"/> " + signs[0][i] + "</li>");
 				}
 				addText(area,history,"</ol>");
 			}else if(text.getText().equals("/ignorelist")){
@@ -743,12 +743,12 @@ public class ChatClient extends JApplet implements Runnable,
 									}
 									if(useEmos){
 										for(int i = 0; i < emos[0].length; i++){
-											message = message.replace(emos[0][i],"<img src=\"" + getClass().getResource("icons/" + emos[1][i]) + "\" border=\"0\"/>");
+											message = message.replace(emos[0][i],"<img src=\"" + getClass().getResource("/icons/" + emos[1][i]) + "\" border=\"0\"/>");
 										}
 									}
 									if(useSigns){
 										for(int i = 0; i < signs[0].length; i++){
-											message = message.replace(signs[0][i],"<img src=\"" + getClass().getResource("icons/" + signs[1][i]) + "\" border=\"0\"/>");
+											message = message.replace(signs[0][i],"<img src=\"" + getClass().getResource("/icons/" + signs[1][i]) + "\" border=\"0\"/>");
 										}
 									}
 									addText(room,history,"<div class=\"system\"><font class=\"command_me\">" + getTimestamp() + "<span class=\"user_" + name +"\">" + name +"</span> " + message + "</font></div>");
@@ -896,12 +896,12 @@ public class ChatClient extends JApplet implements Runnable,
 							String name = inComing[2];
 							if(useEmos){
 								for(int i = 0; i < emos[0].length; i++){
-									endMSG = endMSG.replace(emos[0][i],"<img src=\"" + getClass().getResource("icons/" + emos[1][i]) + "\" border=\"0\"/>");
+									endMSG = endMSG.replace(emos[0][i],"<img src=\"" + getClass().getResource("/icons/" + emos[1][i]) + "\" border=\"0\"/>");
 								}
 							}
 							if(useSigns){
 								for(int i = 0; i < signs[0].length; i++){
-									endMSG = endMSG.replace(signs[0][i],"<img src=\"" + getClass().getResource("icons/" + signs[1][i]) + "\" border=\"0\"/>");
+									endMSG = endMSG.replace(signs[0][i],"<img src=\"" + getClass().getResource("/icons/" + signs[1][i]) + "\" border=\"0\"/>");
 								}
 							}
 							if(!isIgnored(name)){
