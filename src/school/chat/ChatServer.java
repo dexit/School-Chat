@@ -1,13 +1,20 @@
 package school.chat;
+import com.sun.istack.internal.logging.Logger;
 import java.io.*;
 import java.net.*;
 import java.util.*;
 
+/**
+ * Startet den Server mit standart-Port 12345 und der Host-IP-Adresse
+ * @author KönigM
+ */
 public class ChatServer extends Thread {
+    
+    private static final Logger LOG=Logger.getLogger(ChatServer.class);
+    private static final int PORT=12345;
 
 	// Anfang Attribute
 	private static Vector<PrintWriter> manager = new Vector<PrintWriter>();
-	private int port;
 	private volatile Thread t;
 	private ChatThread ct;
 	private ArrayList<ClientStatus> clientList = new ArrayList<ClientStatus>(0);
@@ -19,21 +26,21 @@ public class ChatServer extends Thread {
 	// Ende Attribute
 
 
-	public ChatServer(int port){
+	public ChatServer(){
 		String dburl = ""+getClass().getResource("auth.db");
 		if(dburl.length() >= 5 && dburl.substring(0,5).equals("file:")){
 			dburl = dburl.substring(5);
 		}
 		ms = new MySQL("org.sqlite.JDBC", dburl, true);
-		this.port = port;
+                LOG.info("Port registriert, Datenbank bereitgestellt.");
 	}
 
 	// Anfang Methoden
 	public void startServer(){
 		try {
-			server = new ServerSocket(port);
+			server = new ServerSocket(PORT);
 			InetAddress addr = InetAddress.getLocalHost();
-			System.out.println("Chat server started @ "+addr.getHostName()+"/"+addr.getHostAddress()+":"+port);
+			System.out.println("Chat server started @ "+addr.getHostName()+"/"+addr.getHostAddress()+":"+PORT);
 
 			while(!this.shutdown){
 				Socket client = server.accept();
@@ -70,6 +77,7 @@ public class ChatServer extends Thread {
 	public void showClients(){
 		for(int i = 0; i < clients.size(); i++){
 			System.err.print("\nClient #"+i+" :: "+clients.get(i)+" :: "+clients.get(i).getUserName());
+                        //TODO LOG4J holen...und das hier loggen
 		}
 	}
 
@@ -620,12 +628,17 @@ public class ChatServer extends Thread {
 	}
 	
 	public static void main(String[] args){
-		if(args.length == 0){
+		/*if(args.length == 0){
 			new ChatServerGUI("ChatServer");
 		}else{
 			int port = Integer.parseInt(args[0]);
 			new ChatServer(port).startServer();
-		}
+		}*/
+            //startet den Server nur in der Console...Keine GUI mehr
+            LOG.info("Starte Server...");
+            ChatServer cs=new ChatServer();
+            cs.start();
+            LOG.info("Server gestartet.");
 	}
 	// Ende Methoden
 }

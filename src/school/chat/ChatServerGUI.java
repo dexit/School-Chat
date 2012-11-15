@@ -9,6 +9,7 @@ import java.net.*;
 *
 * @version 1.0 vom 30.09.2009
 * @author Sebastian Riedel
+* @deprecated 
 */
 
 public class ChatServerGUI extends JFrame {
@@ -101,7 +102,7 @@ public class ChatServerGUI extends JFrame {
 		if(this.server){
 			closeServer();
 		}else{
-			cs = new ChatServer(Integer.parseInt(this.serverPort.getText()));
+			cs = new ChatServer();
 			//serverIP.setText(cs.getMyIP());
 			//System.out.println(cs.getMyIP());
 			cs.start();
